@@ -1,4 +1,0 @@
-android-painer
-==============
-
-android painer

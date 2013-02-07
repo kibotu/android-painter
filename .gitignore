@@ -1,20 +1,22 @@
-# built application files
 *.apk
-*.ap_
-
-# files for the dex VM
-*.dex
-
-# Java class files
-*.class
-
-# generated files
-bin/
-gen/
-
-# Local configuration file (sdk path, etc)
-local.properties
-
-# Eclipse project files
-.classpath
+*.gif
+*.wav
+*.mp3
+*.ogg
+*.apk.*
+gen
+bin
+/out/
+*.iws
+workspace.xml
+dataSources.xml
+sqlDataSources.xml
+dynamic.xml
 .project
+.classpath
+proguard.cfg
+default.properties
+*.class
+.metadata
+*.dex
+/cloc-1.55.exe

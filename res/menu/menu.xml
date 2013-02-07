@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- clear screen -->
+    <item android:id="@+id/new_screen"
+          android:icon="@drawable/canvas"
+          android:title="@string/new_screen" />
+    <!-- save screen -->
+    <item android:id="@+id/save_screen"
+          android:icon="@drawable/save"
+          android:title="@string/save_screen" />
+	<!-- brushes -->
+	<item android:id="@+id/brushes" android:icon="@drawable/brushes" android:title="@string/brushes">
+		<menu>
+			<!-- default brush -->
+			<item android:id="@+id/brush_default" android:title="@string/brush_default" />
+			<!-- shaded -->
+			<item android:id="@+id/brush_shaded" android:title="@string/brush_shaded" />
+			<!-- sketchy -->
+			<item android:id="@+id/brush_sketchy" android:title="@string/brush_sketchy" />
+			<!-- chrome -->
+			<item android:id="@+id/brush_chrome" android:title="@string/brush_chrome"/>
+			<!-- web -->
+			<item android:id="@+id/brush_web" android:title="@string/brush_web"/>
+			<!-- fur -->
+			<item android:id="@+id/brush_fur" android:title="@string/brush_fur"/>
+			<!-- ribbon -->
+			<item android:id="@+id/brush_ribbon" android:title="@string/brush_ribbon" android:visible="false"/>
+			<!-- circle -->
+			<item android:id="@+id/brush_circle" android:title="@string/brush_circle" android:visible="false"/>
+		</menu>
+	</item>
+    <!-- bg color picker -->
+    <item android:id="@+id/bg_color_button"
+          android:icon="@drawable/color"
+          android:title="@string/bg_color_button" />
+    <!-- line color picker -->
+    <item android:id="@+id/line_color_button"
+          android:icon="@drawable/color"
+          android:title="@string/line_color_button" />
+	<!-- line stroke size -->
+	<item android:id="@+id/line_stroke_seekbar"
+	      android:icon="@drawable/line_size"
+	      android:title="@string/line_stroke_seekbar" />
+</menu>

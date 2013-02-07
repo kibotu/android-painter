@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Doodle Drawer</string>
+    <string name="new_screen">New</string>
+    <string name="save_screen">Save</string>
+    <string name="settings_bg_color_dialog">Choose Color</string>
+    <string name="settings_bg_color_confirm">Confirm</string>
+    <string name="settings_default_color_confirm">Set as default</string>
+    <string name="bg_color_button">Background</string>
+    <string name="line_color_button">Line</string>
+    <string name="brushes">Brushes</string>
+    <string name="brush_default">Simple</string>
+    <string name="brush_shaded">Shaded</string>
+    <string name="brush_sketchy">Sketchy</string>
+    <string name="brush_circle">Circle</string>
+	<string name="choose_stroke_size">Choose Stroke Size</string>
+	<string name="seekbar_confirm">Confirm</string>
+	<string name="line_stroke_seekbar">Size</string>
+	<string name="current_size">2</string>
+	<string name="brush_chrome">Chrome</string>
+	<string name="brush_web">Web</string>
+	<string name="brush_ribbon">Ribbon</string>
+	<string name="brush_fur">Fur</string>
+</resources>

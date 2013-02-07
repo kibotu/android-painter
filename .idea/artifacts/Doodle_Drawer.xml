@@ -1,0 +1,20 @@
+<component name="ArtifactManager">
+  <artifact type="apk" name="Doodle Drawer">
+    <output-path>$PROJECT_DIR$/out/artifacts/Doodle_Drawer</output-path>
+    <properties id="android-properties">
+      <options>
+        <option name="includeSystemProGuardCfgFile" value="true" />
+        <option name="keyAlias" value="cloudgazer3d" />
+        <option name="keyPassword" value="TnV0YW5pc2FfNjk=" />
+        <option name="keyStorePassword" value="TnV0YW5pc2FfNjk=" />
+        <option name="keyStoreUrl" value="file://D:/Libraries/android/Android Key/key" />
+        <option name="proGuardCfgFileUrl" value="file://$PROJECT_DIR$/proguard-project.txt" />
+        <option name="signingMode" value="RELEASE_SIGNED" />
+      </options>
+    </properties>
+    <root id="archive" name="Doodle Drawer.apk">
+      <element id="android-final-package" facet="Doodle Drawer/android/Android" />
+      <element id="module-output" name="Doodle Drawer" />
+    </root>
+  </artifact>
+</component>
