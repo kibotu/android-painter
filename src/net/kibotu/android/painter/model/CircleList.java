@@ -9,7 +9,8 @@ import java.util.ArrayList;
  */
 public class CircleList {
 
-    private CircleList() {}
+    private CircleList () {
+    }
 
-    public static final ArrayList<Circle> circles = new ArrayList<Circle>(1000);
+    public static final ArrayList<Circle> circles = new ArrayList<Circle>( 1000 );
 }

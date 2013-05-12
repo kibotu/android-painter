@@ -9,7 +9,8 @@ import java.util.ArrayList;
  */
 public class PointsList {
 
-    private PointsList() {}
+    private PointsList () {
+    }
 
-    public static final ArrayList<Point> points = new ArrayList<Point>(10000);
+    public static final ArrayList<Point> points = new ArrayList<Point>( 10000 );
 }

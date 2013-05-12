@@ -8,35 +8,35 @@ public interface ILogger {
     /**
      * TOAST MESSAGE *
      */
-    public void toast(@NotNull String id, String message);
+    public void toast ( @NotNull String id, String message );
 
     /**
      * DEBUG *
      */
-    public void d(@NotNull String id, @Nullable String message);
+    public void d ( @NotNull String id, @Nullable String message );
 
     /**
      * VERBOSE *
      */
-    public void v(@NotNull String id, @Nullable String message);
+    public void v ( @NotNull String id, @Nullable String message );
 
     /**
      * INFO *
      */
-    public void i(@NotNull String id, @Nullable String message);
+    public void i ( @NotNull String id, @Nullable String message );
 
     /**
      * WARN *
      */
-    public void w(@NotNull String id, @Nullable String message);
+    public void w ( @NotNull String id, @Nullable String message );
 
     /**
      * ERROR *
      */
-    public void e(@NotNull String id, @Nullable String message);
+    public void e ( @NotNull String id, @Nullable String message );
 
     /**
      * SAVE TO FILE *
      */
-    public void save(String filename);
+    public void save ( String filename );
 }

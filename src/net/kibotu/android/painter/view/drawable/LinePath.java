@@ -21,7 +21,7 @@ public class LinePath {
     private Brush brush;
     private boolean hasBeenDrawn;
 
-    public LinePath(int color, float strokeWidth, @NotNull Brush brush) {
+    public LinePath ( int color, float strokeWidth, @NotNull Brush brush ) {
         this.color = color;
         this.strokeWidth = strokeWidth;
         this.brush = brush;
@@ -29,47 +29,47 @@ public class LinePath {
         hasBeenDrawn = false;
     }
 
-    public void draw(@NotNull Canvas canvas, @NotNull Paint paint) {
-        paint.setColor(color);
-        paint.setStrokeWidth(strokeWidth);
-        brush.draw(path, canvas, paint);
-        hasBeenDrawn(true);
+    public void draw ( @NotNull Canvas canvas, @NotNull Paint paint ) {
+        paint.setColor( color );
+        paint.setStrokeWidth( strokeWidth );
+        brush.draw( path, canvas, paint );
+        hasBeenDrawn( true );
     }
 
-    public void draw(Bitmap bufferedImage, Paint paint) {
-        paint.setColor(color);
-        paint.setStrokeWidth(strokeWidth);
-        brush.draw(path,bufferedImage,paint);
+    public void draw ( Bitmap bufferedImage, Paint paint ) {
+        paint.setColor( color );
+        paint.setStrokeWidth( strokeWidth );
+        brush.draw( path, bufferedImage, paint );
     }
 
-    public void startLine(@NotNull Point point) {
-        path.moveTo(point.x, point.y);
+    public void startLine ( @NotNull Point point ) {
+        path.moveTo( point.x, point.y );
     }
 
-    public void add(@NotNull Point p) {
-        brush.add(path,p);
-        brush.addConnections(p,color,strokeWidth);
+    public void add ( @NotNull Point p ) {
+        brush.add( path, p );
+        brush.addConnections( p, color, strokeWidth );
     }
 
-    public void add(@NotNull Point... points) {
-        for (int i = 0; i < points.length; ++i) {
-            add(points[i]);
+    public void add ( @NotNull Point... points ) {
+        for ( int i = 0; i < points.length; ++ i ) {
+            add( points[i] );
         }
     }
 
-    public void close() {
+    public void close () {
         path.close();
     }
 
-    public void clear() {
+    public void clear () {
         path.reset();
     }
 
-    public boolean hasBeenDrawn() {
+    public boolean hasBeenDrawn () {
         return hasBeenDrawn;
     }
 
-    public void hasBeenDrawn(boolean hasBeenDrawn) {
+    public void hasBeenDrawn ( boolean hasBeenDrawn ) {
         this.hasBeenDrawn = hasBeenDrawn;
     }
 }

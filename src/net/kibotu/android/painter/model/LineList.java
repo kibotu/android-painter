@@ -9,7 +9,8 @@ import java.util.ArrayList;
  */
 public class LineList {
 
-    private LineList() {}
+    private LineList () {
+    }
 
-    public static final ArrayList<Line> connections = new ArrayList<Line>(10000);
+    public static final ArrayList<Line> connections = new ArrayList<Line>( 10000 );
 }

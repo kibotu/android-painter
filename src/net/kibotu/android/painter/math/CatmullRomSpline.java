@@ -27,7 +27,7 @@ import java.util.List;
  * @author badlogicgames@gmail.com
  */
 public class CatmullRomSpline implements Serializable {
-    private static final long serialVersionUID = -3290464799289771451L;
+    private static final long serialVersionUID = - 3290464799289771451L;
     private List<Vector3> controlPoints = new ArrayList<Vector3>();
     Vector3 T1 = new Vector3();
     Vector3 T2 = new Vector3();
@@ -37,18 +37,18 @@ public class CatmullRomSpline implements Serializable {
      *
      * @param point the point
      */
-    public void add(Vector3 point) {
-        controlPoints.add(point);
+    public void add ( Vector3 point ) {
+        controlPoints.add( point );
     }
 
-    public void add(float x, float y, float z) {
-        controlPoints.add(new Vector3(x, y, z));
+    public void add ( float x, float y, float z ) {
+        controlPoints.add( new Vector3( x, y, z ) );
     }
 
     /**
      * @return all control points
      */
-    public List<Vector3> getControlPoints() {
+    public List<Vector3> getControlPoints () {
         return controlPoints;
     }
 
@@ -57,43 +57,44 @@ public class CatmullRomSpline implements Serializable {
      * The first and the last controlpoint are omitted. if there's less than 4 controlpoints an empty path is returned.
      *
      * @param numPoints number of points returned for a segment
+     *
      * @return the path
      */
-    public List<Vector3> getPath(int numPoints) {
+    public List<Vector3> getPath ( int numPoints ) {
         ArrayList<Vector3> points = new ArrayList<Vector3>();
 
-        if (controlPoints.size() < 4) return points;
+        if ( controlPoints.size() < 4 ) return points;
 
         Vector3 T1 = new Vector3();
         Vector3 T2 = new Vector3();
 
-        for (int i = 1; i <= controlPoints.size() - 3; i++) {
-            points.add(controlPoints.get(i));
-            float increment = 1.0f / (numPoints + 1);
+        for ( int i = 1; i <= controlPoints.size() - 3; i++ ) {
+            points.add( controlPoints.get( i ) );
+            float increment = 1.0f / ( numPoints + 1 );
             float t = increment;
 
-            T1.set(controlPoints.get(i + 1)).sub(controlPoints.get(i - 1)).mul(0.5f);
-            T2.set(controlPoints.get(i + 2)).sub(controlPoints.get(i)).mul(0.5f);
+            T1.set( controlPoints.get( i + 1 ) ).sub( controlPoints.get( i - 1 ) ).mul( 0.5f );
+            T2.set( controlPoints.get( i + 2 ) ).sub( controlPoints.get( i ) ).mul( 0.5f );
 
-            for (int j = 0; j < numPoints; j++) {
+            for ( int j = 0; j < numPoints; j++ ) {
                 float h1 = 2 * t * t * t - 3 * t * t + 1; // calculate basis
                 // function 1
-                float h2 = -2 * t * t * t + 3 * t * t; // calculate basis
+                float h2 = - 2 * t * t * t + 3 * t * t; // calculate basis
                 // function 2
                 float h3 = t * t * t - 2 * t * t + t; // calculate basis
                 // function 3
                 float h4 = t * t * t - t * t; // calculate basis function 4
 
-                Vector3 point = new Vector3(controlPoints.get(i)).mul(h1);
-                point.add(controlPoints.get(i + 1).tmp().mul(h2));
-                point.add(T1.tmp().mul(h3));
-                point.add(T2.tmp().mul(h4));
-                points.add(point);
+                Vector3 point = new Vector3( controlPoints.get( i ) ).mul( h1 );
+                point.add( controlPoints.get( i + 1 ).tmp().mul( h2 ) );
+                point.add( T1.tmp().mul( h3 ) );
+                point.add( T2.tmp().mul( h4 ) );
+                points.add( point );
                 t += increment;
             }
         }
 
-        if (controlPoints.size() >= 4) points.add(controlPoints.get(controlPoints.size() - 2));
+        if ( controlPoints.size() >= 4 ) points.add( controlPoints.get( controlPoints.size() - 2 ) );
 
         return points;
     }
@@ -105,79 +106,80 @@ public class CatmullRomSpline implements Serializable {
      * @param points    the array of Vector3 instances to store the path in
      * @param numPoints number of points returned for a segment
      */
-    public void getPath(Vector3[] points, int numPoints) {
+    public void getPath ( Vector3[] points, int numPoints ) {
         int idx = 0;
-        if (controlPoints.size() < 4) return;
+        if ( controlPoints.size() < 4 ) return;
 
-        for (int i = 1; i <= controlPoints.size() - 3; i++) {
-            points[idx++].set(controlPoints.get(i));
-            float increment = 1.0f / (numPoints + 1);
+        for ( int i = 1; i <= controlPoints.size() - 3; i++ ) {
+            points[idx++].set( controlPoints.get( i ) );
+            float increment = 1.0f / ( numPoints + 1 );
             float t = increment;
 
-            T1.set(controlPoints.get(i + 1)).sub(controlPoints.get(i - 1)).mul(0.5f);
-            T2.set(controlPoints.get(i + 2)).sub(controlPoints.get(i)).mul(0.5f);
+            T1.set( controlPoints.get( i + 1 ) ).sub( controlPoints.get( i - 1 ) ).mul( 0.5f );
+            T2.set( controlPoints.get( i + 2 ) ).sub( controlPoints.get( i ) ).mul( 0.5f );
 
-            for (int j = 0; j < numPoints; j++) {
+            for ( int j = 0; j < numPoints; j++ ) {
                 float h1 = 2 * t * t * t - 3 * t * t + 1; // calculate basis
                 // function 1
-                float h2 = -2 * t * t * t + 3 * t * t; // calculate basis
+                float h2 = - 2 * t * t * t + 3 * t * t; // calculate basis
                 // function 2
                 float h3 = t * t * t - 2 * t * t + t; // calculate basis
                 // function 3
                 float h4 = t * t * t - t * t; // calculate basis function 4
 
-                Vector3 point = points[idx++].set(controlPoints.get(i)).mul(h1);
-                point.add(controlPoints.get(i + 1).tmp().mul(h2));
-                point.add(T1.tmp().mul(h3));
-                point.add(T2.tmp().mul(h4));
+                Vector3 point = points[idx++].set( controlPoints.get( i ) ).mul( h1 );
+                point.add( controlPoints.get( i + 1 ).tmp().mul( h2 ) );
+                point.add( T1.tmp().mul( h3 ) );
+                point.add( T2.tmp().mul( h4 ) );
                 t += increment;
             }
         }
 
-        points[idx].set(controlPoints.get(controlPoints.size() - 2));
+        points[idx].set( controlPoints.get( controlPoints.size() - 2 ) );
     }
 
     /**
      * Returns all tangents for the points in a path. Same semantics as getPath.
      *
      * @param numPoints number of points returned for a segment
+     *
      * @return the tangents of the points in the path
      */
-    public List<Vector3> getTangents(int numPoints) {
+    public List<Vector3> getTangents ( int numPoints ) {
         ArrayList<Vector3> tangents = new ArrayList<Vector3>();
 
-        if (controlPoints.size() < 4) return tangents;
+        if ( controlPoints.size() < 4 ) return tangents;
 
         Vector3 T1 = new Vector3();
         Vector3 T2 = new Vector3();
 
-        for (int i = 1; i <= controlPoints.size() - 3; i++) {
-            float increment = 1.0f / (numPoints + 1);
+        for ( int i = 1; i <= controlPoints.size() - 3; i++ ) {
+            float increment = 1.0f / ( numPoints + 1 );
             float t = increment;
 
-            T1.set(controlPoints.get(i + 1)).sub(controlPoints.get(i - 1)).mul(0.5f);
-            T2.set(controlPoints.get(i + 2)).sub(controlPoints.get(i)).mul(0.5f);
+            T1.set( controlPoints.get( i + 1 ) ).sub( controlPoints.get( i - 1 ) ).mul( 0.5f );
+            T2.set( controlPoints.get( i + 2 ) ).sub( controlPoints.get( i ) ).mul( 0.5f );
 
-            tangents.add(new Vector3(T1).nor());
+            tangents.add( new Vector3( T1 ).nor() );
 
-            for (int j = 0; j < numPoints; j++) {
+            for ( int j = 0; j < numPoints; j++ ) {
                 float h1 = 6 * t * t - 6 * t; // calculate basis function 1
-                float h2 = -6 * t * t + 6 * t; // calculate basis function 2
+                float h2 = - 6 * t * t + 6 * t; // calculate basis function 2
                 float h3 = 3 * t * t - 4 * t + 1; // calculate basis function 3
                 float h4 = 3 * t * t - 2 * t; // calculate basis function 4
 
-                Vector3 point = new Vector3(controlPoints.get(i)).mul(h1);
-                point.add(controlPoints.get(i + 1).tmp().mul(h2));
-                point.add(T1.tmp().mul(h3));
-                point.add(T2.tmp().mul(h4));
-                tangents.add(point.nor());
+                Vector3 point = new Vector3( controlPoints.get( i ) ).mul( h1 );
+                point.add( controlPoints.get( i + 1 ).tmp().mul( h2 ) );
+                point.add( T1.tmp().mul( h3 ) );
+                point.add( T2.tmp().mul( h4 ) );
+                tangents.add( point.nor() );
                 t += increment;
             }
         }
 
-        if (controlPoints.size() >= 4)
-            tangents.add(T1.set(controlPoints.get(controlPoints.size() - 1)).sub(controlPoints.get(controlPoints.size() - 3))
-                    .mul(0.5f).cpy().nor());
+        if ( controlPoints.size() >= 4 )
+            tangents.add( T1.set( controlPoints.get( controlPoints.size() - 1 ) ).sub( controlPoints.get( controlPoints.size() - 3 ) )
+                    .mul( 0.5f ).cpy().nor() );
 
         return tangents;
     }
@@ -187,44 +189,45 @@ public class CatmullRomSpline implements Serializable {
      * to work. Same semantics as getPath.
      *
      * @param numPoints number of points returned for a segment
+     *
      * @return the tangents of the points in the path
      */
-    public List<Vector3> getTangentNormals2D(int numPoints) {
+    public List<Vector3> getTangentNormals2D ( int numPoints ) {
         ArrayList<Vector3> tangents = new ArrayList<Vector3>();
 
-        if (controlPoints.size() < 4) return tangents;
+        if ( controlPoints.size() < 4 ) return tangents;
 
         Vector3 T1 = new Vector3();
         Vector3 T2 = new Vector3();
 
-        for (int i = 1; i <= controlPoints.size() - 3; i++) {
-            float increment = 1.0f / (numPoints + 1);
+        for ( int i = 1; i <= controlPoints.size() - 3; i++ ) {
+            float increment = 1.0f / ( numPoints + 1 );
             float t = increment;
 
-            T1.set(controlPoints.get(i + 1)).sub(controlPoints.get(i - 1)).mul(0.5f);
-            T2.set(controlPoints.get(i + 2)).sub(controlPoints.get(i)).mul(0.5f);
+            T1.set( controlPoints.get( i + 1 ) ).sub( controlPoints.get( i - 1 ) ).mul( 0.5f );
+            T2.set( controlPoints.get( i + 2 ) ).sub( controlPoints.get( i ) ).mul( 0.5f );
 
-            Vector3 normal = new Vector3(T1).nor();
+            Vector3 normal = new Vector3( T1 ).nor();
             float x = normal.x;
             normal.x = normal.y;
-            normal.y = -x;
-            tangents.add(normal);
+            normal.y = - x;
+            tangents.add( normal );
 
-            for (int j = 0; j < numPoints; j++) {
+            for ( int j = 0; j < numPoints; j++ ) {
                 float h1 = 6 * t * t - 6 * t; // calculate basis function 1
-                float h2 = -6 * t * t + 6 * t; // calculate basis function 2
+                float h2 = - 6 * t * t + 6 * t; // calculate basis function 2
                 float h3 = 3 * t * t - 4 * t + 1; // calculate basis function 3
                 float h4 = 3 * t * t - 2 * t; // calculate basis function 4
 
-                Vector3 point = new Vector3(controlPoints.get(i)).mul(h1);
-                point.add(controlPoints.get(i + 1).tmp().mul(h2));
-                point.add(T1.tmp().mul(h3));
-                point.add(T2.tmp().mul(h4));
+                Vector3 point = new Vector3( controlPoints.get( i ) ).mul( h1 );
+                point.add( controlPoints.get( i + 1 ).tmp().mul( h2 ) );
+                point.add( T1.tmp().mul( h3 ) );
+                point.add( T2.tmp().mul( h4 ) );
                 point.nor();
                 x = point.x;
                 point.x = point.y;
-                point.y = -x;
-                tangents.add(point);
+                point.y = - x;
+                tangents.add( point );
                 t += increment;
             }
         }
@@ -237,25 +240,26 @@ public class CatmullRomSpline implements Serializable {
      *
      * @param numPoints number of points per segment
      * @param up        up vector
+     *
      * @return a list of tangent normals
      */
-    public List<Vector3> getTangentNormals(int numPoints, Vector3 up) {
-        List<Vector3> tangents = getTangents(numPoints);
+    public List<Vector3> getTangentNormals ( int numPoints, Vector3 up ) {
+        List<Vector3> tangents = getTangents( numPoints );
         ArrayList<Vector3> normals = new ArrayList<Vector3>();
 
-        for (Vector3 tangent : tangents)
-            normals.add(new Vector3(tangent).crs(up).nor());
+        for ( Vector3 tangent : tangents )
+            normals.add( new Vector3( tangent ).crs( up ).nor() );
 
         return normals;
     }
 
-    public List<Vector3> getTangentNormals(int numPoints, List<Vector3> up) {
-        List<Vector3> tangents = getTangents(numPoints);
+    public List<Vector3> getTangentNormals ( int numPoints, List<Vector3> up ) {
+        List<Vector3> tangents = getTangents( numPoints );
         ArrayList<Vector3> normals = new ArrayList<Vector3>();
 
         int i = 0;
-        for (Vector3 tangent : tangents)
-            normals.add(new Vector3(tangent).crs(up.get(i++)).nor());
+        for ( Vector3 tangent : tangents )
+            normals.add( new Vector3( tangent ).crs( up.get( i++ ) ).nor() );
 
         return normals;
     }

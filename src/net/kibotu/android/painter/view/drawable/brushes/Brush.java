@@ -10,22 +10,22 @@ public abstract class Brush {
 
     protected Canvas canvas;
 
-    protected Brush(Canvas canvas) {
+    protected Brush ( Canvas canvas ) {
         this.canvas = canvas;
     }
 
-    public Brush() {
-        this(new Canvas());
+    public Brush () {
+        this( new Canvas() );
     }
 
-    public abstract void draw(Path path, Canvas canvas, Paint paint);
+    public abstract void draw ( Path path, Canvas canvas, Paint paint );
 
-    public void draw(Path path, Bitmap bitmap, Paint paint) {
-        canvas.setBitmap(bitmap);
-        draw(path,canvas,paint);
+    public void draw ( Path path, Bitmap bitmap, Paint paint ) {
+        canvas.setBitmap( bitmap );
+        draw( path, canvas, paint );
     }
 
-    public abstract void add(Path path, Point p);
+    public abstract void add ( Path path, Point p );
 
-    public abstract void addConnections(Point nextPoint, int color, float strokeWidth);
+    public abstract void addConnections ( Point nextPoint, int color, float strokeWidth );
 }

@@ -21,15 +21,15 @@ public class Utils {
 
     private static final String TAG = Utils.class.getSimpleName();
 
-    private Utils() {
+    private Utils () {
     }
 
-    public static final Bitmap getBitmap(int resourceId, float scale) {
-        final Bitmap bitmap = BitmapFactory.decodeStream(Shared.getContext().getResources().openRawResource(resourceId));
+    public static final Bitmap getBitmap ( int resourceId, float scale ) {
+        final Bitmap bitmap = BitmapFactory.decodeStream( Shared.getContext().getResources().openRawResource( resourceId ) );
         // scale
         final Matrix matrix = new Matrix();
-        matrix.postScale(scale, scale);
-        return Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+        matrix.postScale( scale, scale );
+        return Bitmap.createBitmap( bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true );
     }
 
     /**
@@ -38,27 +38,28 @@ public class Utils {
      * @param screenshot
      * @param filePath
      * @param fileName
+     *
      * @return saved filepath
      */
-    public static String saveBitmap(@NotNull Bitmap screenshot, @NotNull String filePath, @NotNull String fileName) {
+    public static String saveBitmap ( @NotNull Bitmap screenshot, @NotNull String filePath, @NotNull String fileName ) {
         OutputStream outStream = null;
-        File dir = new File(filePath);
+        File dir = new File( filePath );
         dir.mkdirs();
         File output;
         String finalPath;
         do {
             finalPath = filePath + fileName + "_" + UIDGenerator.getNewUID() + ".png";
-            output = new File(finalPath);
-        } while (output.exists());
+            output = new File( finalPath );
+        } while ( output.exists() );
         try {
-            outStream = new FileOutputStream(output);
-            screenshot.compress(Bitmap.CompressFormat.PNG, 100, outStream);
+            outStream = new FileOutputStream( output );
+            screenshot.compress( Bitmap.CompressFormat.PNG, 100, outStream );
             outStream.flush();
             outStream.close();
-            Logger.V(TAG, "Saving Screenshot [" + filePath + fileName + "]");
-        } catch (FileNotFoundException e) {
+            Logger.V( TAG, "Saving Screenshot [" + filePath + fileName + "]" );
+        } catch ( FileNotFoundException e ) {
             e.printStackTrace();
-        } catch (IOException e) {
+        } catch ( IOException e ) {
             e.printStackTrace();
         }
 
@@ -71,28 +72,28 @@ public class Utils {
      * @param activity
      * @param message
      */
-    final public static void toast(final Activity activity, final String message) {
-        activity.runOnUiThread(new Runnable() {
-            public void run() {
-                Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
+    final public static void toast ( final Activity activity, final String message ) {
+        activity.runOnUiThread( new Runnable() {
+            public void run () {
+                Toast.makeText( activity, message, Toast.LENGTH_SHORT ).show();
             }
-        });
+        } );
     }
 
-    public static int[] HSB2RGB(int j, int d, int c) {
+    public static int[] HSB2RGB ( int j, int d, int c ) {
         int e = 0, g = 0, l = 0, h = 0, k = 0, b = 0, a = 0, m = 0;
-        if (c == 0) {
-            return new int[]{0, 0, 0};
+        if ( c == 0 ) {
+            return new int[] { 0, 0, 0 };
         }
         j *= 0.016666667;
         d *= 0.01;
         c *= 0.01;
-        h = (int) Math.floor(j);
+        h = ( int ) Math.floor( j );
         k = j - h;
-        b = c * (1 - d);
-        a = c * (1 - (d * k));
-        m = c * (1 - (d * (1 - k)));
-        switch (h) {
+        b = c * ( 1 - d );
+        a = c * ( 1 - ( d * k ) );
+        m = c * ( 1 - ( d * ( 1 - k ) ) );
+        switch ( h ) {
             case 0:
                 e = c;
                 g = m;
@@ -124,26 +125,26 @@ public class Utils {
                 l = a;
                 break;
         }
-        return new int[]{e, g, l};
+        return new int[] { e, g, l };
     }
 
-    public static int[] RGB2HSB(int c, int d, int k) {
+    public static int[] RGB2HSB ( int c, int d, int k ) {
         int j = 0, h = 0, e = 0, g = 0, b = 0, a = 0;
-        j = Math.min(Math.min(c, d), k);
-        a = Math.max(Math.max(c, d), k);
-        if (j == a) {
-            return new int[]{0, 0, a * 100};
+        j = Math.min( Math.min( c, d ), k );
+        a = Math.max( Math.max( c, d ), k );
+        if ( j == a ) {
+            return new int[] { 0, 0, a * 100 };
         }
-        h = (c == j) ? d - k : ((d == j) ? k - c : c - d);
-        e = (c == j) ? 3 : ((d == j) ? 5 : 1);
-        g = (int) (Math.floor((e - h / (a - j)) * 60) % 360);
-        b = (int) Math.floor(((a - j) / a) * 100);
-        a = (int) Math.floor(a * 100);
-        return new int[]{g, b, a};
+        h = ( c == j ) ? d - k : ( ( d == j ) ? k - c : c - d );
+        e = ( c == j ) ? 3 : ( ( d == j ) ? 5 : 1 );
+        g = ( int ) ( Math.floor( ( e - h / ( a - j ) ) * 60 ) % 360 );
+        b = ( int ) Math.floor( ( ( a - j ) / a ) * 100 );
+        a = ( int ) Math.floor( a * 100 );
+        return new int[] { g, b, a };
     }
 
-    public static int getRandomColor() {
+    public static int getRandomColor () {
         Random random = new Random();
-        return Color.rgb(random.nextInt(255), random.nextInt(255), random.nextInt(255));
+        return Color.rgb( random.nextInt( 255 ), random.nextInt( 255 ), random.nextInt( 255 ) );
     }
 }

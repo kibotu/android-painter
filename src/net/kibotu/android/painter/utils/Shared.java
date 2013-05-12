@@ -12,14 +12,14 @@ final public class Shared {
     private static Context context;
 
     // utility class
-    private Shared() {
+    private Shared () {
     }
 
-    public static Context getContext() {
+    public static Context getContext () {
         return Shared.context;
     }
 
-    public static void setContext(Context context) {
+    public static void setContext ( Context context ) {
         Shared.context = context;
     }
 }

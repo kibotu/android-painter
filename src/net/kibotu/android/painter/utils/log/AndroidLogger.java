@@ -9,35 +9,35 @@ public enum AndroidLogger implements ILogger {
     INSTANCE;
 
     @Override
-    public void toast(@NotNull String o, String message) {
+    public void toast ( @NotNull String o, String message ) {
     }
 
     @Override
-    public void d(@NotNull String id, @Nullable String message) {
-        Log.d(id, message);
+    public void d ( @NotNull String id, @Nullable String message ) {
+        Log.d( id, message );
     }
 
     @Override
-    public void v(@NotNull String id, @Nullable String message) {
-        Log.v(id, message);
+    public void v ( @NotNull String id, @Nullable String message ) {
+        Log.v( id, message );
     }
 
     @Override
-    public void i(@NotNull String id, @Nullable String message) {
-        Log.i(id, message);
+    public void i ( @NotNull String id, @Nullable String message ) {
+        Log.i( id, message );
     }
 
     @Override
-    public void w(@NotNull String id, @Nullable String message) {
-        Log.w(id, message);
+    public void w ( @NotNull String id, @Nullable String message ) {
+        Log.w( id, message );
     }
 
     @Override
-    public void e(@NotNull String id, @Nullable String message) {
-        Log.e(id, message);
+    public void e ( @NotNull String id, @Nullable String message ) {
+        Log.e( id, message );
     }
 
     @Override
-    public void save(String filename) {
+    public void save ( String filename ) {
     }
 }
